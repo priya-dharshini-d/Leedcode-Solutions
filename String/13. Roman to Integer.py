@@ -11,7 +11,7 @@ class Solution:
             'M': 1000
         }
 
-        total = 0  # This will store the final result
+        total = 0       # This will store the final result
         prev_value = 0  # To keep track of the previous character's value
 
         # Traverse the string from right to left
