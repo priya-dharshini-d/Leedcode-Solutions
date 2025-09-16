@@ -1,47 +1,38 @@
-class Solution:
-    def intToRoman(self, num: int) -> str:
-        Roman = ""
-        storeIntRoman = [[1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"], [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]]
-        for i in range(len(storeIntRoman)):
-            while num >= storeIntRoman[i][0]:
-                Roman += storeIntRoman[i][1]
-                num -= storeIntRoman[i][0]
-        return Roman
 
+class Solution: #100%
+  def intToRoman(self, num: int) -> str:
+    vals = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    chars = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+
+    numerals = ""
+    for i in range(len(vals)):
+      key = vals[i]
+      while num >= key:
+        num -= key
+        numerals += chars[i]
+      
+    return numerals
 
 """
+Complexity breakdown:
 
-# Beats - 86.94%
-Suppose num = 58.
+Outer loop = 13 iterations = O(1).
 
-Start with 1000 ("M"): 58 < 1000 → skip.
+Inner loop = ≤15 iterations total = O(1).
 
-900 ("CM"): 58 < 900 → skip.
+String concatenation = at most 15 symbols = O(1).
 
-500 ("D"): 58 < 500 → skip.
+✅ Final Time Complexity: O(1)
+✅ Space Complexity: O(1)
+"""
+"""
+Symbol	Value
 
-400 ("CD"): skip.
-
-100 ("C"): skip.
-
-90 ("XC"): skip.
-
-50 ("L"): 58 >= 50 → add "L" to Roman, subtract 50 → num = 8
-
-40 ("XL"): 8 < 40 → skip.
-
-10 ("X"): 8 < 10 → skip.
-
-9 ("IX"): 8 < 9 → skip.
-
-5 ("V"): 8 >= 5 → add "V", subtract 5 → num = 3
-
-4 ("IV"): 3 < 4 → skip.
-
-1 ("I"): 3 >= 1 → add "I", subtract 1 → num = 2
-
-Loop repeats for "I" until num is zero, adding "III".
-
-Final Roman numeral: "LVIII"
-
+I	1
+V	5
+X	10
+L	50
+C	100
+D	500
+M	1000
 """
