@@ -1,3 +1,5 @@
+#TIME: O(N) SPACE: O(1)
+
 class Solution:
     def removeOuterParentheses(self, s: str) -> str:
         output=""
